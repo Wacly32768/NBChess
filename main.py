@@ -15,8 +15,8 @@ import re
 
 """
 
-with open("settings.json", "r", encoding="gbk") as f:
-    settings = json.loads(f.read()) #读取设置文件
+with open("settings.json", "r", encoding="gbk") as f:#读取设置文件
+    settings = json.loads(f.read()) 
 
 SCREEN_WIDTH, SCREEN_HEIGHT = arcade.get_display_size() #获取屏幕分辨率
 
@@ -29,7 +29,8 @@ window.set_update_rate(1/60) #设置窗口刷新率
 window.set_mouse_visible(True) #设置鼠标可见
 window.set_vsync(settings["vsync"]) #设置垂直同步
 print(settings["bg_color"],arcade.color.Color())
-window.background_color = settings["bg_color"] #设置背景颜色
+R,G,B,A = settings["bg_color"]["R"], settings["bg_color"]["G"], settings["bg_color"]["B"], settings["bg_color"]["A"] #提取设置中的背景颜色
+window.background_color = arcade.color.Color(R, G, B, A) #设置背景颜色
 
 
 
